@@ -198,6 +198,7 @@
             this.receivedMessage.Size = new System.Drawing.Size(190, 82);
             this.receivedMessage.TabIndex = 7;
             this.receivedMessage.Text = "";
+            this.receivedMessage.TextChanged += new System.EventHandler(this.receivedMessage_TextChanged);
             // 
             // buttonMasterSendMessage
             // 

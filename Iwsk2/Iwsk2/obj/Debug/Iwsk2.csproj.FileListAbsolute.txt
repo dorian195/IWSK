@@ -8,3 +8,13 @@ D:\Uczelnia\SEM6\IWSK\1\Zad2Moje\Iwsk2\Iwsk2\obj\Debug\Iwsk2.csproj.GenerateReso
 D:\Uczelnia\SEM6\IWSK\1\Zad2Moje\Iwsk2\Iwsk2\obj\Debug\Iwsk2.csproj.CoreCompileInputs.cache
 D:\Uczelnia\SEM6\IWSK\1\Zad2Moje\Iwsk2\Iwsk2\obj\Debug\Iwsk2.exe
 D:\Uczelnia\SEM6\IWSK\1\Zad2Moje\Iwsk2\Iwsk2\obj\Debug\Iwsk2.pdb
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\bin\Debug\Iwsk2.exe.config
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\bin\Debug\Iwsk2.exe
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\bin\Debug\Iwsk2.pdb
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\obj\Debug\Iwsk2.csprojAssemblyReference.cache
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\obj\Debug\Iwsk2.Form1.resources
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\obj\Debug\Iwsk2.Properties.Resources.resources
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\obj\Debug\Iwsk2.csproj.GenerateResource.cache
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\obj\Debug\Iwsk2.csproj.CoreCompileInputs.cache
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\obj\Debug\Iwsk2.exe
+D:\Uczelnia\SEM6\IWSK\IWSK\Iwsk2\Iwsk2\obj\Debug\Iwsk2.pdb

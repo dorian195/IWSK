@@ -9,14 +9,54 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 
+/*
+ * DO ZROBIENIA na pewno na samym dole:
+ * 
+ * Odebranie wiadomości przez Slave'a
+ * Sprawdzenie poprawności adresu
+ * Sprawdzenie poprawności ramki
+ * Wykonanie rozkazu
+ * Odesłanie wiadomości zwrotnej przez Slave'a
+ * 
+ * Generalnie część po stronie Slave'a, praktycznie analogicznie
+ */
+
 namespace Iwsk2
 {
+    //Struktura ramki
+    struct Message
+    {
+        public char[] sof;
+        public char[] address;
+        public char[] order;
+        public char[] message;
+        public char[] lrc;
+        public char[] eof;
+
+        public Message(char[] sof, char[] eof)
+        {
+            this.sof = sof;
+            this.address = null;
+            this.order = null;
+            this.message = null;
+            this.lrc = null;
+            this.eof = eof;
+        }
+        public void deleteMessage()
+        {
+            this.address = null;
+            this.order = null;
+            this.message = null;
+            this.lrc = null;
+        }
+    }
     public partial class Form1 : Form
     {
         const string addressTrans = "Adresowana";
         const string broadcastTrans = "Rozgłoszeniowa";
         const string normalAnswer = "Normalna";
         const string specialAnswer = "Szczególna";
+        Message message;
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +64,6 @@ namespace Iwsk2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Uzupełnianie komponentów
             comboBoxProtocole.Items.Add("Master");
             comboBoxProtocole.Items.Add("Slave");
             comboBoxTransactionType.Items.Add(addressTrans);
@@ -125,12 +164,10 @@ namespace Iwsk2
         //Wysłanie stworzonej ramki
         private void buttonMasterSendMessage_Click(object sender, EventArgs e)
         {
-            char[] sof = { ':' };
-            char[] address = transactionAddress.Value.ToString().ToCharArray();
-            char[] order = comboBoxOrderType.Text.ToCharArray();
-            char[] msg = masterSendMessage.Text.ToCharArray();
-            char[] lrc = calculateLRC(Encoding.ASCII.GetBytes(masterSendMessage.Text.ToString())).ToString().ToCharArray();
-            char[] endMaker = "/r/n".ToCharArray();
+            message.address = transactionAddress.Value.ToString().ToCharArray();
+            message.order = comboBoxOrderType.Text.ToCharArray();
+            message.message = masterSendMessage.Text.ToCharArray();
+            message.lrc = calculateLRC(Encoding.ASCII.GetBytes(masterSendMessage.Text.ToString())).ToString().ToCharArray();
         }
 
         private void Connect_Click(object sender, EventArgs e)
@@ -167,26 +204,42 @@ namespace Iwsk2
             masterSendMessage.Enabled = false;
         }
 
+        //Odebranie wiadomości zwrotnej przez Mastera
+        private void receivedMessage_TextChanged(object sender, EventArgs e)
+        {
+            string msg = serialPort1.ReadExisting();
+            if (receivedMessage.InvokeRequired)
+            {
+                Action act = () => receivedMessage.Text += msg;
+                Invoke(act);
+            }
+            else
+            {
+                receivedMessage.Text += msg;
+            }
+        }
+
+        //Odebranie wiadomości przez Slave'a
         private void buttonSlaveReceiveMsg_Click(object sender, EventArgs e)
         {
 
         }
-
+        //Sprawdzenie poprawności adresu
         private void buttonAddressCheck_Click(object sender, EventArgs e)
         {
 
         }
-
+        //Sprawdzenie poprawności ramki
         private void buttonFrameCheck_Click(object sender, EventArgs e)
         {
 
         }
-
+        //Wykonanie rozkazu
         private void buttonExecuteOrder_Click(object sender, EventArgs e)
         {
 
         }
-
+        //Odesłanie wiadomości zwrotnej przez Slave'a
         private void buttonSlaveSendMessage_Click(object sender, EventArgs e)
         {
 
